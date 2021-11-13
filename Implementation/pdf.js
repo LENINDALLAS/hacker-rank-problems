@@ -9,11 +9,9 @@
 
 function designerPdfViewer(h, word) {
     // Write your code here
-    const converted = [];
     const high = { entry: 0 }
     for (let letter of word) {
-        let code = letter.charCodeAt() - 97;
-        let lookup = h[code];
+        let lookup = h[letter.charCodeAt() - 97];
         if (high.entry < lookup) {
             high.entry = lookup;
         }
