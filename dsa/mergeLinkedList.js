@@ -96,3 +96,29 @@ function mergeLists(head1, head2) {
 
     return list;
 };
+
+//more optimized 
+
+
+function mergeLists(head1, head2) {
+    let list1 = head1,
+        list2 = head2,
+        head = {
+            data: null,
+            next: null
+        },
+        list = head;
+
+    while (list1 && list2) {
+        if (list1.data >= list2.data) {
+            list.next = list2;
+            list2 = list2.next;
+        } else {
+            list.next = list1;
+            list1 = list1.next;
+        }
+        list = list.next;
+    }
+    list1 ? list.next = list1 : list.next = list2;
+    return head.next;
+};
